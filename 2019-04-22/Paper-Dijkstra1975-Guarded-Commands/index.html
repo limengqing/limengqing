@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Dijkstra,paper,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1">
+
+
+
+
+
+
+<meta name="description" content="Guarded Commands, Nondeterminacy and Formal Derivation of Programsby Dijkstra / 1975">
+<meta name="keywords" content="Dijkstra,paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper-Dijkstra1975-Guarded-Commands">
+<meta property="og:url" content="http://limengqing.github.com/2019-04-22/Paper-Dijkstra1975-Guarded-Commands/index.html">
+<meta property="og:site_name" content="mqGo">
+<meta property="og:description" content="Guarded Commands, Nondeterminacy and Formal Derivation of Programsby Dijkstra / 1975">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-04-04T05:05:04.397Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Paper-Dijkstra1975-Guarded-Commands">
+<meta name="twitter:description" content="Guarded Commands, Nondeterminacy and Formal Derivation of Programsby Dijkstra / 1975">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://limengqing.github.com/2019-04-22/Paper-Dijkstra1975-Guarded-Commands/">
+
+
+
+
+
+  <title>Paper-Dijkstra1975-Guarded-Commands | mqGo</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?aeddd930eabab283dece11b88f389a47";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mqGo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://limengqing.github.com/2019-04-22/Paper-Dijkstra1975-Guarded-Commands/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mqGo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Paper-Dijkstra1975-Guarded-Commands</h1>
+        
+
+        <div class="post-meta">
+          
+
+          
+            <span class="post-category">
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs/" itemprop="url" rel="index">
+                    <span itemprop="name">cs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Guarded Commands, Nondeterminacy and Formal Derivation of Programs<br>by Dijkstra / 1975</p>
+<a id="more"></a>
+<p>dl: <a href="/dl/Dijkstra1975.pdf">Dijkstra1975</a></p>
+<p>Dijkstra 介绍了一种构建程序的方式，即 “guarded commands”，利用它我们可以描述 nondeterminstic 程序。<br>define nondeterminism: 程序执行过程中行为、甚至程序的终结态，都无法根据程序的初始状态唯一确定。</p>
+<p>文章主体分三部分：</p>
+<ol>
+<li>guarded commands 表达体系，一种直观性的介绍</li>
+<li>alternative construct 和 repetitive construct 正式的定义 </li>
+<li>guarded commands 体系下的程序推演：呈现为一种规则世界，而不是一个算法</li>
+</ol>
+<p>关于 guarded commands 直观表达，因为原文实在惊艳，我决定把这段定义摘抄一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;guarded command&gt; ::= &lt;guard&gt; -&gt; &lt;guared list&gt;</span><br><span class="line">&lt;guard&gt; ::= &lt;boolean expression&gt;</span><br><span class="line">&lt;guarded list&gt; ::= &lt;statement&gt; &#123;; &lt;statement&gt;&#125;</span><br><span class="line">&lt;statement&gt; ::= &lt;alternative construct&gt; | &lt;repetitive construct&gt; | &quot;other statements&quot;</span><br><span class="line">&lt;alternative construct&gt; ::= if &lt;guarded command set&gt; fi</span><br><span class="line">&lt;repetitive construct&gt; ::= do &lt;guarded command set&gt; od</span><br><span class="line">&lt;guarded command set&gt; ::= &lt;guarded command&gt; &#123;[] &lt;guarded command&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>Formal Definition of the Semantics</p>
+<ol>
+<li>用离散数学替换了一下 <code>if fi</code> &amp; <code>do od</code> 的表达</li>
+<li>weakest pre-conditions 的推演规则</li>
+</ol>
+<p>感受：枚举大法好；递归大法好。</p>
+<p>注意 Dijkstra 提了几个概念：</p>
+<ul>
+<li>[pre | post] conditions</li>
+<li>predicate transformer, weakest pre-conditions <code>wp</code></li>
+</ul>
+<p>其实最后的 Concluding Remarks 是我觉得最值得读的部分，也是最有趣的，我在深夜反复读这几段，感觉非常愉悦。摘录如下：</p>
+<blockquote>
+<p>The resarch, the outcome of which is reported in this article, was triggered by the observation that Euclid’s Algorithm could also be regarded as synchronizing the two cyclic processes <code>do x:=x-y od</code> and <code>do y:=y-x od</code> in such a way that the relation <code>x&gt;0 and y&gt;0</code> would be kept invariantly true. It was only after this observation that we saw that the formal techniques we had already developed for the derivation of the synchronizing conditions that ensure the harmonious cooperation of (cyclic) sequential processes, such as can be identified in the total activity of operating systems, could be transferred lock, stock, and barrel to the development of sequential programs as shown in this article. The main difference is that while for sequential programs the situation “all guards false” is a desirable goal - for it means termination of a repetitive construct - one tries to avoid it in operating systems - for there it means deadlock. </p>
+</blockquote>
+<p>神奇的是，在不同的方向上越走越深的时候，经常竟发现其中贯通之处。我其实更倾向将它归结于人的思考方式本身。<br>关于他说的 programming langugage 和 operating systems 中的共同之处，我还希望更深入地进行思考。</p>
+<blockquote>
+<p>The second reason to pursue these investigations was my personal desire to get a better appreciation, which part of the programming activity can be reguarded as a formal routine and which part of it seems to require “invention”. While the design of an alternative construct now seems to be a reasonably straightforward activity, that of a repetitive construct requires what I regard as “the invention” of an invariant relation and a variant function. My presentation of this calculus should, however, not be interpreted as my suggestion that all programs should be developed in this way: it just gives us another handle. </p>
+</blockquote>
+<p>个人经历中，programming 经常是肌肉活动，但时不时冒出的 “invention”，还有灵光的时刻，实在是让人兴奋和满足。</p>
+<blockquote>
+<p>The calculus does, however, explain my preference for the axiomatic definition of programming language semantics via predicate transformers above other definition techniques: the definition via predicate transformers seems to lend itself most readily to being forged into a tool for the goal-directed activity of program composition. </p>
+</blockquote>
+<p>表达方式真的会影响很多。我经常会想某种语言选择了某种表达方式，设计者真正想做的是什么。在我从 Java 转向 Golang 后关于这方面的思考愈发多了。<br>关于这一段所说的，我还不太有切身体会，希望进一步学习。</p>
+<blockquote>
+<p>Finally, I would like to add a word or two about the potential nondeterminacy. Having worked mainly with hardly self-checking hardware, with which nonreproducing behavior of user programs is a very strong indication of a machine malfunctioning, I had to overcome a considerable mental resistance before I found myself willing to consider nondeterministic programs seriously. It is, however, fair to say that I could nver have discovered the calculus before having taken that hurdle: the simplicity and elegance of the above would have been destroyed by requiring the derivation of deterministic programs only. Whether nondeterminacy is eventually removed mechanically - in order not to mislead the maintenance engineer - or (perhaps only partly) by the programmer himself because, at second thought, he does care - e.g. for reasons of efficiency - which alternative is chosen is something I leave entirely to the circumstance. In any case we appreciate the nondeterministic program as a help stepping stone. </p>
+</blockquote>
+<p>👆读这段超想笑，真的笑了。还是向他学习。</p>
+<p>我将进一步思考的问题：</p>
+<ul>
+<li>这篇文章是在什么背景下产生的，它的动机是什么</li>
+<li>对比 Hoare 的 <em>An axiomatic basis for computer programming</em> 和 <em>communicating Sequential Processes</em> </li>
+<li>programming language &amp; operating systems</li>
+<li>invention in programming activity</li>
+<li>axiomatic definition of programming language semantics via predicate transformers</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="mq WeChat Pay">
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="mq Alipay">
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Dijkstra/" rel="tag"># Dijkstra</a>
+          
+            <a href="/tags/paper/" rel="tag"># paper</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-07-12/JDK-java-lang-Integer/" rel="next" title="JDK-java.lang.Integer">
+                <i class="fa fa-chevron-left"></i> JDK-java.lang.Integer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="mq">
+          <p class="site-author-name" itemprop="name">mq</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/limengqing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.linkedin.com/in/mengqing-li-419a78127/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://javadoop.com/" title="Java熊" target="_blank">Java熊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mq</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://limengqing.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://limengqing.github.com/2019-04-22/Paper-Dijkstra1975-Guarded-Commands/';
+          this.page.identifier = '2019-04-22/Paper-Dijkstra1975-Guarded-Commands/';
+          this.page.title = 'Paper-Dijkstra1975-Guarded-Commands';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://limengqing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
